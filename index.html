@@ -468,27 +468,37 @@
         
         .checkbox-label {
             display: flex;
-            align-items: flex-start;
-            gap: 16px;
+            align-items: center;
+            gap: 12px;
             cursor: pointer;
             font-size: 15px;
             line-height: 1.5;
+            padding: 8px 0;
         }
         
         .checkbox-label input[type="checkbox"] {
-            display: none;
+            opacity: 0;
+            position: absolute;
+            width: 0;
+            height: 0;
         }
         
         .checkmark {
-            width: 24px;
-            height: 24px;
-            border: 2px solid rgba(255,255,255,0.7);
-            border-radius: 6px;
-            background: transparent;
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(255,255,255,0.8);
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
             flex-shrink: 0;
-            margin-top: 2px;
             position: relative;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            vertical-align: middle;
+        }
+        
+        .checkmark:hover {
+            border-color: rgba(255,255,255,1);
+            background: rgba(255,255,255,0.15);
         }
         
         .checkbox-label input[type="checkbox"]:checked + .checkmark {
@@ -497,20 +507,22 @@
         }
         
         .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
-            content: '✓';
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
         }
         
         .checkbox-text {
             flex: 1;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.95);
             font-size: 15px;
+            user-select: none;
         }
         
         .privacy-detail-btn {
@@ -531,21 +543,30 @@
             background: rgba(255,255,255,0.1);
         }
         
+        .privacy-detail-btn:focus {
+            outline: 2px solid #BBE1FA;
+            outline-offset: 2px;
+        }
+        
         /* 모바일에서 체크박스 터치 영역 확대 */
         @media (max-width: 767px) {
             .checkbox-label {
-                padding: 8px 0;
-                gap: 20px;
+                padding: 12px 0;
+                gap: 16px;
             }
             
             .checkmark {
-                width: 28px;
-                height: 28px;
-                border-width: 3px;
+                width: 26px;
+                height: 26px;
+                border-width: 2px;
             }
             
             .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
-                font-size: 18px;
+                left: 8px;
+                top: 3px;
+                width: 6px;
+                height: 14px;
+                border-width: 0 2px 2px 0;
             }
             
             .checkbox-text {
@@ -555,7 +576,16 @@
             .privacy-detail-btn {
                 font-size: 15px;
                 padding: 4px 8px;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
             }
+        }
+        
+        /* 체크박스 포커스 스타일 */
+        .checkbox-label input[type="checkbox"]:focus + .checkmark {
+            outline: 2px solid #BBE1FA;
+            outline-offset: 2px;
         }
         
         /* 긴급성 배너 - 모바일 최적화 */
@@ -874,6 +904,22 @@
                 <div class="testimonial-content">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">
+                        "BMW 운용리스로 세금 절감 효과까지 얻을 수 있어서 정말 좋았습니다. 
+                        전문 상담사님이 법인 절세 혜택까지 자세히 설명해주셔서 큰 도움이 되었어요!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">이○○ 고객님</div>
+                            <div class="author-detail">BMW 7시리즈 고급수입차 운용리스</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
                         "여러 금융사를 다 알아봐야 하는 번거로움 없이 한 곳에서 모든 조건을 비교해주셨어요. 
                         덕분에 기존 견적보다 월 10만원이나 저렴하게 신차를 구매할 수 있었습니다!"
                     </p>
@@ -897,22 +943,6 @@
                         <div class="author-info">
                             <div class="author-name">박○○ 고객님</div>
                             <div class="author-detail">기아 K5 중고차 렌트</div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            
-            <article class="testimonial-card">
-                <div class="testimonial-content">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">
-                        "BMW 운용리스로 세금 절감 효과까지 얻을 수 있어서 정말 좋았습니다. 
-                        전문 상담사님이 법인 절세 혜택까지 자세히 설명해주셔서 큰 도움이 되었어요!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <div class="author-name">이○○ 고객님</div>
-                            <div class="author-detail">BMW 3시리즈 고급수입차 운용리스</div>
                         </div>
                     </div>
                 </div>
