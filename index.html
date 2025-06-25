@@ -461,6 +461,103 @@
             cursor: not-allowed;
         }
         
+        /* 체크박스 스타일 */
+        .checkbox-group {
+            margin-bottom: 24px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            cursor: pointer;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            display: none;
+        }
+        
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(255,255,255,0.7);
+            border-radius: 6px;
+            background: transparent;
+            flex-shrink: 0;
+            margin-top: 2px;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .checkbox-label input[type="checkbox"]:checked + .checkmark {
+            background: #FF6B35;
+            border-color: #FF6B35;
+        }
+        
+        .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .checkbox-text {
+            flex: 1;
+            color: rgba(255,255,255,0.9);
+            font-size: 15px;
+        }
+        
+        .privacy-detail-btn {
+            background: none;
+            border: none;
+            color: #BBE1FA;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 2px 4px;
+            margin-left: 4px;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+        
+        .privacy-detail-btn:hover {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* 모바일에서 체크박스 터치 영역 확대 */
+        @media (max-width: 767px) {
+            .checkbox-label {
+                padding: 8px 0;
+                gap: 20px;
+            }
+            
+            .checkmark {
+                width: 28px;
+                height: 28px;
+                border-width: 3px;
+            }
+            
+            .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+                font-size: 18px;
+            }
+            
+            .checkbox-text {
+                font-size: 16px;
+            }
+            
+            .privacy-detail-btn {
+                font-size: 15px;
+                padding: 4px 8px;
+            }
+        }
+        
         /* 긴급성 배너 - 모바일 최적화 */
         .urgency-banner {
             background: #FF6B35;
@@ -572,7 +669,7 @@
             }
             
             .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
                 gap: 32px;
             }
             
@@ -761,7 +858,7 @@
                 <div class="trust-label">빠른 응답 보장</div>
             </div>
             <div class="trust-item">
-                <div class="trust-number">50+</div>
+                <div class="trust-number">20+</div>
                 <div class="trust-label">제휴 금융사</div>
             </div>
         </div>
@@ -783,7 +880,7 @@
                     <div class="testimonial-author">
                         <div class="author-info">
                             <div class="author-name">김○○ 고객님</div>
-                            <div class="author-detail">현대 아반떼 신차 할부</div>
+                            <div class="author-detail">현대 아반떼 신차 리스</div>
                         </div>
                     </div>
                 </div>
@@ -793,13 +890,29 @@
                 <div class="testimonial-content">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
                     <p class="testimonial-text">
-                        "신용등급이 낮아서 차량 대출이 어려웠는데, 오토포레스트에서 저에게 맞는 조건을 찾아주셨어요. 
-                        상담사님이 정말 친절하고 전문적이었습니다!"
+                        "신용등급이 낮아서 차량 구매가 어려웠는데, 오토포레스트에서 중고차 렌트를 추천해주셨어요. 
+                        월 납입금도 부담 없고 정말 만족스럽습니다!"
                     </p>
                     <div class="testimonial-author">
                         <div class="author-info">
                             <div class="author-name">박○○ 고객님</div>
-                            <div class="author-detail">기아 K5 중고차 할부</div>
+                            <div class="author-detail">기아 K5 중고차 렌트</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="testimonial-card">
+                <div class="testimonial-content">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">
+                        "BMW 운용리스로 세금 절감 효과까지 얻을 수 있어서 정말 좋았습니다. 
+                        전문 상담사님이 법인 절세 혜택까지 자세히 설명해주셔서 큰 도움이 되었어요!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">이○○ 고객님</div>
+                            <div class="author-detail">BMW 3시리즈 고급수입차 운용리스</div>
                         </div>
                     </div>
                 </div>
@@ -814,6 +927,16 @@
         
         <div class="services-grid">
             <article class="service-card">
+                <div class="service-icon" aria-hidden="true">📋</div>
+                <h3 class="service-title">리스/장기렌트</h3>
+                <p class="service-description">
+                    세금 절감 효과<br>
+                    유지비 절감<br>
+                    저신용자도 가능
+                </p>
+            </article>
+            
+            <article class="service-card">
                 <div class="service-icon" aria-hidden="true">🚗</div>
                 <h3 class="service-title">신차/중고차 할부</h3>
                 <p class="service-description">
@@ -824,22 +947,12 @@
             </article>
             
             <article class="service-card">
-                <div class="service-icon" aria-hidden="true">💰</div>
-                <h3 class="service-title">차량 담보대출</h3>
+                <div class="service-icon" aria-hidden="true">🎯</div>
+                <h3 class="service-title">저신용자 무심사 장기렌트</h3>
                 <p class="service-description">
-                    소유 차량으로 자금 마련<br>
-                    당일 입금 가능<br>
-                    최대 한도 보장
-                </p>
-            </article>
-            
-            <article class="service-card">
-                <div class="service-icon" aria-hidden="true">📋</div>
-                <h3 class="service-title">리스/장기렌트</h3>
-                <p class="service-description">
-                    세금 절감 효과<br>
-                    유지비 절감<br>
-                    저신용자도 가능
+                    신용등급 무관<br>
+                    심사 절차 간소화<br>
+                    당일 승인 가능
                 </p>
             </article>
         </div>
@@ -903,13 +1016,24 @@
                     <label for="service">관심 서비스 <span aria-label="필수">*</span></label>
                     <select id="service" name="service" required>
                         <option value="">선택해주세요</option>
-                        <option value="신차할부">신차 할부</option>
-                        <option value="중고차할부">중고차 할부</option>
                         <option value="리스">오토리스</option>
                         <option value="장기렌트">장기렌트</option>
+                        <option value="신차할부">신차 할부</option>
+                        <option value="중고차할부">중고차 할부</option>
                         <option value="무심사렌트">무심사렌트</option>
                         <option value="기타">기타</option>
                     </select>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="privacy-agree" name="privacy-agree" required>
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">
+                            개인정보 수집·이용에 동의합니다 <span aria-label="필수">*</span>
+                            <button type="button" class="privacy-detail-btn" onclick="showPrivacyModal()">상세보기</button>
+                        </span>
+                    </label>
                 </div>
                 
                 <button type="submit" class="submit-button">
@@ -945,6 +1069,31 @@
         </div>
     </div>
     
+    <!-- 개인정보 처리방침 모달 -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-content" style="max-width: 500px; max-height: 80vh; overflow-y: auto;">
+            <h2 style="color: #0F4C75; margin-bottom: 20px;">개인정보 수집·이용 동의</h2>
+            <div style="text-align: left; color: #333; font-size: 14px; line-height: 1.6;">
+                <h3 style="color: #0F4C75; margin-bottom: 10px;">1. 수집하는 개인정보 항목</h3>
+                <p style="margin-bottom: 15px;">이름, 연락처, 관심 차종, 관심 서비스</p>
+                
+                <h3 style="color: #0F4C75; margin-bottom: 10px;">2. 개인정보 수집 및 이용목적</h3>
+                <ul style="margin-bottom: 15px; padding-left: 20px;">
+                    <li>자동차 금융 상담 서비스 제공</li>
+                    <li>맞춤형 견적 제공</li>
+                    <li>상담 결과 안내</li>
+                </ul>
+                
+                <h3 style="color: #0F4C75; margin-bottom: 10px;">3. 개인정보 보유 및 이용기간</h3>
+                <p style="margin-bottom: 15px;">수집일로부터 3년 (상담 완료 후 1년)</p>
+                
+                <h3 style="color: #0F4C75; margin-bottom: 10px;">4. 동의 거부권</h3>
+                <p style="margin-bottom: 20px;">개인정보 수집에 동의하지 않을 권리가 있으나, 동의를 거부할 경우 상담 서비스 이용이 제한될 수 있습니다.</p>
+            </div>
+            <button class="cta-button" onclick="closePrivacyModal()">확인</button>
+        </div>
+    </div>
+    
     <script>
         // 폼으로 스크롤
         function scrollToForm() {
@@ -962,6 +1111,7 @@
             const name = form.name.value.trim();
             const phone = form.phone.value.trim();
             const service = form.service.value;
+            const privacyAgree = form['privacy-agree'].checked;
             
             if (!name) {
                 alert('이름을 입력해주세요.');
@@ -978,6 +1128,11 @@
             if (!service) {
                 alert('관심 서비스를 선택해주세요.');
                 form.service.focus();
+                return;
+            }
+            
+            if (!privacyAgree) {
+                alert('개인정보 수집·이용에 동의해주세요.');
                 return;
             }
             
@@ -1051,6 +1206,16 @@
             document.getElementById('successModal').style.display = 'none';
         }
         
+        // 개인정보 모달 열기
+        function showPrivacyModal() {
+            document.getElementById('privacyModal').style.display = 'flex';
+        }
+        
+        // 개인정보 모달 닫기
+        function closePrivacyModal() {
+            document.getElementById('privacyModal').style.display = 'none';
+        }
+        
         // 모달 배경 클릭 시 닫기
         document.getElementById('successModal').addEventListener('click', function(e) {
             if (e.target === this) {
@@ -1058,10 +1223,17 @@
             }
         });
         
+        document.getElementById('privacyModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePrivacyModal();
+            }
+        });
+        
         // ESC 키로 모달 닫기
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeModal();
+                closePrivacyModal();
             }
         });
         
